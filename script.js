@@ -17,6 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300);
     });
   }
+  const meinfo = document.querySelector('.meinfo');
+if (meinfo) {
+  const fullText = meinfo.textContent;
+  meinfo.textContent = '';
+  meinfo.classList.add('typing');
+
+  let i = 0;
+  function typeChar() {
+    if (i < fullText.length) {
+      meinfo.textContent += fullText.charAt(i);
+      i++;
+      setTimeout(typeChar, 60);
+    } else {
+      meinfo.classList.remove('typing');
+      meinfo.classList.add('typed-done');
+    }
+  }
+
+  setTimeout(typeChar, 900); // starts just after your 0.8s fade-in finishes
+}
+const flipCards = document.querySelectorAll('.mainpage .flip-card');
+flipCards.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+  });
+});
 
 }
 
