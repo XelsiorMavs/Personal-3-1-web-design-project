@@ -49,16 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(typeChar, 900); // starts just after the 0.8s fade-in finishes
     } // end tagline typing effect
 
-    // --- Flip cards: tap to flip, auto-flips back after a delay ---
+        // --- Flip cards: tap to flip, tap again to flip back ---
     const flipCards = document.querySelectorAll('.mainpage .flip-card');
     flipCards.forEach(card => {
       card.addEventListener('click', () => {
-        if (!card.classList.contains('flipped')) {
-          card.classList.add('flipped');
-          setTimeout(() => {
-            card.classList.remove('flipped');
-          }, 1500); // how long it stays flipped before auto-returning
-        }
+        card.classList.toggle('flipped');
       });
     }); // end flip cards
 
