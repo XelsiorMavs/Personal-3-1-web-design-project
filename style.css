@@ -9,6 +9,8 @@
 
 .fade-wrapper {
   animation: fadeIn 0.8s ease-in;
+  position: relative;
+  z-index: 1;
 }
 
 * {
@@ -25,7 +27,7 @@
 }
 
 @keyframes blinkCursor {
-  0%, 50%    { opacity: 1; }
+  0%, 50%      { opacity: 1; }
   50.01%, 100% { opacity: 0; }
 }
 
@@ -47,13 +49,14 @@ body.mainpage {
     0 0 12px #b829f7, 
     0 0 24px rgba(184, 41, 247, 0.7),
     0 20px 40px rgba(0, 0, 0, 0.6);
-  padding: 1.5rem;
-  background-color: #000000;
-  margin-top: 10rem;
-  max-width: 650px;
+  padding: 1.1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-top: 7.5rem;
+  max-width: 490px;
   margin-left: auto;
   margin-right: auto;
-  transition: transform 0.3s ease, border-width 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, border-width 0.3s ease, box-shadow 0.3s ease,
+              background-color 0.8s ease, border-color 0.8s ease;
 }
 
 .mainpage .infoboxme:hover,
@@ -75,8 +78,8 @@ body.mainpage {
 }
 
 .mainpage .content-box img {
-  width: 300px;
-  height: 300px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid transparent;
@@ -86,7 +89,7 @@ body.mainpage {
   box-shadow: 
     0 0 12px #b829f7, 
     0 0 24px rgba(184, 41, 247, 0.7);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, opacity 0.8s ease;
 }
 
 .mainpage .content-box img:hover {
@@ -96,7 +99,7 @@ body.mainpage {
 }
 
 .mainpage .names {
-  font-size: 50px;
+  font-size: 38px;
   letter-spacing: 0.05em;
   margin-bottom: 0;
   font-family: "Audiowide", sans-serif;
@@ -105,7 +108,7 @@ body.mainpage {
 }
 
 .mainpage .meinfo {
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 0;
   text-decoration: underline;
   font-family: "Audiowide", sans-serif;
@@ -127,7 +130,7 @@ body.mainpage {
   flex-direction: row;
   gap: 1.5rem;
   justify-content: center;
-  max-width: 650px;
+  max-width: 490px;
   margin: 3rem auto 0;
   flex-wrap: nowrap;
 }
@@ -184,8 +187,9 @@ body.mainpage {
     0 0 12px #b829f7, 
     0 0 24px rgba(184, 41, 247, 0.7),
     0 20px 40px rgba(0, 0, 0, 0.6);
-  padding: 1.5rem;
-  background-color: #0e0e0e;
+  padding: 1.1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: background-color 0.8s ease, border-color 0.8s ease;
 }
 
 .mainpage .cardleft:hover,
@@ -249,6 +253,74 @@ body.mainpage {
 .mainpage .pull-tab:hover {
   transform: translateY(-50%) translateX(0%);
   box-shadow: 0 0 20px #b829f7, 0 0 40px rgba(184, 41, 247, 0.9);
+}
+
+/* background toggle: image layer + trigger icon */
+
+.mainpage .bg-image-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/testimg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mainpage .bg-image-layer.active {
+  opacity: 1;
+}
+
+.mainpage .bg-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+
+.mainpage .bg-toggle:hover {
+  transform: scale(1.1);
+}
+
+.mainpage .bg-toggle img {
+  width: 58px;
+  height: 58px;
+  image-rendering: pixelated;
+}
+
+/* background-active state: strips away cards/borders/avatar, leaving only text */
+
+body.mainpage.bg-active .infoboxme,
+body.mainpage.bg-active .introbox,
+body.mainpage.bg-active .cardleft,
+body.mainpage.bg-active .cardmiddle,
+body.mainpage.bg-active .cardright,
+body.mainpage.bg-active .cardleft-back,
+body.mainpage.bg-active .cardmiddle-back,
+body.mainpage.bg-active .cardright-back {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+body.mainpage.bg-active .content-box img {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* mainpage mobile nav (desktop-hidden, shown in mobile section below) */

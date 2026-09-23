@@ -49,14 +49,25 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(typeChar, 900); // starts just after the 0.8s fade-in finishes
     } // end tagline typing effect
 
-        // --- Flip cards: tap to flip, tap again to flip back ---
+        // --- Flip cards: hover flips on desktop, tap-to-toggle on touch devices only ---
     const flipCards = document.querySelectorAll('.mainpage .flip-card');
     flipCards.forEach(card => {
       card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
+        const supportsHover = window.matchMedia('(hover: hover)').matches;
+        if (!supportsHover) {
+          card.classList.toggle('flipped');
+        }
       });
     }); // end flip cards
-
+        // --- Background toggle: swaps between plain and image background ---
+    const bgToggle = document.querySelector('.bg-toggle');
+    const bgLayer = document.querySelector('.bg-image-layer');
+    if (bgToggle && bgLayer) {
+      bgToggle.addEventListener('click', () => {
+        bgLayer.classList.toggle('active');
+        document.body.classList.toggle('bg-active');
+      });
+    } // end background toggle
   } // end mainpage block
 
 
@@ -83,6 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } // end pull-tab click handler
 
+    // --- Background toggle: swaps between plain and image background ---
+    const bgToggle = document.querySelector('.bg-toggle');
+    const bgLayer = document.querySelector('.bg-image-layer');
+    if (bgToggle && bgLayer) {
+      bgToggle.addEventListener('click', () => {
+        bgLayer.classList.toggle('active');
+      });
+    } // end background toggle
   } // end library block
 
 
