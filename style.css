@@ -41,8 +41,18 @@ body.mainpage {
   color: #ffffff;
 }
 
-.mainpage .infoboxme,
-.mainpage .introbox { 
+.mainpage .infoboxme {
+  border-radius: 30px;
+  padding: 1.1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-top: 7.5rem;
+  max-width: 490px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease, background-color 0.8s ease;
+}
+
+.mainpage .introbox {
   border: 2px solid #b829f7;
   border-radius: 30px;
   box-shadow: 
@@ -59,7 +69,10 @@ body.mainpage {
               background-color 0.8s ease, border-color 0.8s ease;
 }
 
-.mainpage .infoboxme:hover,
+.mainpage .infoboxme:hover {
+  transform: translateY(-6px);
+}
+
 .mainpage .introbox:hover {
   transform: translateY(-6px);
   border-width: 4px;
@@ -75,27 +88,6 @@ body.mainpage {
   gap: 0.75rem;
   align-items: center;
   text-align: center;
-}
-
-.mainpage .content-box img {
-  width: 225px;
-  height: 225px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid transparent;
-  background: 
-    linear-gradient(#000, #000) padding-box,
-    conic-gradient(from 0deg, #b829f7, #ff00e6, #b829f7) border-box;
-  box-shadow: 
-    0 0 12px #b829f7, 
-    0 0 24px rgba(184, 41, 247, 0.7);
-  transition: box-shadow 0.3s ease, opacity 0.8s ease;
-}
-
-.mainpage .content-box img:hover {
-  box-shadow: 
-    0 0 20px #b829f7, 
-    0 0 40px rgba(184, 41, 247, 0.9);
 }
 
 .mainpage .names {
@@ -203,6 +195,14 @@ body.mainpage {
     0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
+body.mainpage.bg-active .cardleft:hover,
+body.mainpage.bg-active .cardmiddle:hover,
+body.mainpage.bg-active .cardright:hover {
+  box-shadow: 
+    0 0 20px #ffffff, 
+    0 0 40px rgba(255, 255, 255, 0.7),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+}
 .mainpage .card-content {
   display: flex;
   flex-direction: column;
@@ -303,9 +303,8 @@ body.mainpage {
   image-rendering: pixelated;
 }
 
-/* background-active state: strips away cards/borders/avatar, leaving only text */
+/* background-active state: border shifts from purple to white */
 
-body.mainpage.bg-active .infoboxme,
 body.mainpage.bg-active .introbox,
 body.mainpage.bg-active .cardleft,
 body.mainpage.bg-active .cardmiddle,
@@ -313,16 +312,76 @@ body.mainpage.bg-active .cardright,
 body.mainpage.bg-active .cardleft-back,
 body.mainpage.bg-active .cardmiddle-back,
 body.mainpage.bg-active .cardright-back {
-  background-color: transparent;
-  border-color: transparent;
-  box-shadow: none;
+  border-color: #ffffff;
+  box-shadow: 
+    0 0 12px #ffffff, 
+    0 0 24px rgba(255, 255, 255, 0.5),
+    0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
-body.mainpage.bg-active .content-box img {
-  opacity: 0;
-  pointer-events: none;
+body.mainpage.bg-active .cardleft:hover,
+body.mainpage.bg-active .cardmiddle:hover,
+body.mainpage.bg-active .cardright:hover {
+  box-shadow: 
+    0 0 20px #ffffff, 
+    0 0 40px rgba(255, 255, 255, 0.7),
+    0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
+body.mainpage.bg-active .contactbox {
+  border-color: #ffffff;
+  box-shadow: 
+    0 0 12px #ffffff, 
+    0 0 24px rgba(255, 255, 255, 0.5),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+body.mainpage.bg-active .contactbox:hover {
+  box-shadow: 
+    0 0 20px #ffffff, 
+    0 0 40px rgba(255, 255, 255, 0.7),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* contact row */
+
+.mainpage .contactbox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  max-width: 490px;
+  margin: 2rem auto 0;
+  padding: 1.1rem;
+  border: 2px solid #b829f7;
+  border-radius: 30px;
+  box-shadow: 
+    0 0 12px #b829f7, 
+    0 0 24px rgba(184, 41, 247, 0.7),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, border-width 0.3s ease, box-shadow 0.3s ease,
+              background-color 0.8s ease, border-color 0.8s ease;
+}
+
+.mainpage .contactbox:hover {
+  transform: translateY(-6px);
+  border-width: 4px;
+  box-shadow: 
+    0 0 20px #b829f7, 
+    0 0 40px rgba(184, 41, 247, 0.9),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.mainpage .contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+  /* font-family: ; TODO: set your own font family here */
+  font-size: 0.9rem;
+  transition: opacity 0.2s ease;
+}
 /* mainpage mobile nav (desktop-hidden, shown in mobile section below) */
 
 .mobile-nav a {
@@ -334,6 +393,8 @@ body.mainpage.bg-active .content-box img {
   border: 2px solid #b829f7;
   border-radius: 8px;
 }
+
+
 
 
 /* =====================================================
@@ -379,6 +440,142 @@ body.page-library {
   transform: translateY(-50%) translateX(0%);
 }
 
+/* bookshelf */
+
+.page-library .bookshelf {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 2rem 2rem 0;
+  border-bottom: 10px solid #6b4a30;
+  max-width: 650px;
+  margin: 4rem auto 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 16px 16px 0 0;
+}
+
+.page-library .book-slot {
+  perspective: 1000px;
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.page-library .book {
+  width: 60px;
+  height: 190px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: pointer;
+}
+
+.page-library .book.revealed {
+  transform: rotateY(180deg) translateX(40px);
+}
+
+.page-library .book-spine,
+.page-library .book-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px 3px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-library .book-spine {
+  background-color: #7a4a2b;
+  writing-mode: vertical-rl;
+}
+
+.page-library .spine-title {
+  color: #f4ead9;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.page-library .book-cover {
+  background-color: #9c6b3f;
+  transform: rotateY(180deg);
+  width: 140px;
+}
+
+
+/* flashcard */
+
+.page-library .book-flashcard {
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 260px;
+  background-color: #A98B76;
+  border: 3px solid #D4AF37;
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 300;
+}
+
+.page-library .book-flashcard.active {
+  display: block;
+}
+
+.page-library .flashcard-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #1D4533;
+  cursor: pointer;
+}
+
+.page-library .flashcard-cover {
+  width: 100%;
+  height: 280px;
+  background-color: #9c6b3f;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+
+.page-library .flashcard-info h3 {
+  margin: 0 0 0.3rem;
+  color: #1D4533;
+}
+
+.page-library .flashcard-author {
+  font-size: 0.85rem;
+  color: #1D4533;
+  margin: 0 0 0.6rem;
+  font-style: italic;
+}
+
+.page-library .flashcard-desc {
+  font-size: 0.85rem;
+  color: #1D4533;
+  margin: 0 0 1rem;
+}
+
+.page-library .read-me-btn {
+  display: inline-block;
+  background-color: #D4AF37;
+  color: #1D4533;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: opacity 0.2s ease;
+}
+
+.page-library .read-me-btn:hover {
+  opacity: 0.8;
+}
 
 /* =====================================================
    HOBBY — DESKTOP
@@ -417,11 +614,6 @@ body.page-library {
     margin-top: 3rem;
     max-width: 90%;
     padding: 1rem;
-  }
-
-  .mainpage .content-box img {
-    width: 180px;
-    height: 180px;
   }
 
   .mainpage .names {
@@ -474,11 +666,6 @@ body.page-library {
    ===================================================== */
 
 @media (max-width: 400px) {
-
-  .mainpage .content-box img {
-    width: 140px;
-    height: 140px;
-  }
 
   .mainpage .names {
     font-size: 26px;

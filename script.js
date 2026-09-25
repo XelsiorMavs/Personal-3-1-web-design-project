@@ -102,6 +102,47 @@ document.addEventListener('DOMContentLoaded', () => {
         bgLayer.classList.toggle('active');
       });
     } // end background toggle
+
+                // --- Bookshelf: click any book to reveal its cover + flashcard ---
+    const books = document.querySelectorAll('.page-library .book');
+    const flashcards = document.querySelectorAll('.page-library .book-flashcard');
+
+    books.forEach(book => {
+      const bookId = book.id; // e.g. "book1"
+      const flashcard = document.getElementById('flashcard' + bookId.replace('book', ''));
+
+      book.addEventListener('click', () => {
+        const isAlreadyOpen = book.classList.contains('revealed');
+
+        // close every other open book + flashcard first
+        books.forEach(b => {
+          if (b !== book) b.classList.remove('revealed');
+        });
+        flashcards.forEach(fc => {
+          if (fc !== flashcard) fc.classList.remove('active');
+        });
+
+        if (isAlreadyOpen) {
+          // clicking the already-open book closes it
+          book.classList.remove('revealed');
+          if (flashcard) flashcard.classList.remove('active');
+        } else {
+          // otherwise open the clicked one
+          book.classList.add('revealed');
+          setTimeout(() => {
+            if (flashcard) flashcard.classList.add('active');
+          }, 400);
+        }
+      });
+
+      if (flashcard) {
+        const closeBtn = flashcard.querySelector('.flashcard-close');
+        closeBtn.addEventListener('click', () => {
+          flashcard.classList.remove('active');
+          book.classList.remove('revealed');
+        });
+      }
+    }); // end bookshelfs
   } // end library block
 
 
