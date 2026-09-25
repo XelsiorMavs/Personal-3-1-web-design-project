@@ -440,6 +440,142 @@ body.page-library {
   transform: translateY(-50%) translateX(0%);
 }
 
+/* bookshelf */
+
+.page-library .bookshelf {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 2rem 2rem 0;
+  border-bottom: 10px solid #6b4a30;
+  max-width: 650px;
+  margin: 4rem auto 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 16px 16px 0 0;
+}
+
+.page-library .book-slot {
+  perspective: 1000px;
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.page-library .book {
+  width: 60px;
+  height: 190px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: pointer;
+}
+
+.page-library .book.revealed {
+  transform: rotateY(180deg) translateX(40px);
+}
+
+.page-library .book-spine,
+.page-library .book-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px 3px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-library .book-spine {
+  background-color: #7a4a2b;
+  writing-mode: vertical-rl;
+}
+
+.page-library .spine-title {
+  color: #f4ead9;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.page-library .book-cover {
+  background-color: #9c6b3f;
+  transform: rotateY(180deg);
+  width: 140px;
+}
+
+
+/* flashcard */
+
+.page-library .book-flashcard {
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 260px;
+  background-color: #A98B76;
+  border: 3px solid #D4AF37;
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 300;
+}
+
+.page-library .book-flashcard.active {
+  display: block;
+}
+
+.page-library .flashcard-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #1D4533;
+  cursor: pointer;
+}
+
+.page-library .flashcard-cover {
+  width: 100%;
+  height: 280px;
+  background-color: #9c6b3f;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+
+.page-library .flashcard-info h3 {
+  margin: 0 0 0.3rem;
+  color: #1D4533;
+}
+
+.page-library .flashcard-author {
+  font-size: 0.85rem;
+  color: #1D4533;
+  margin: 0 0 0.6rem;
+  font-style: italic;
+}
+
+.page-library .flashcard-desc {
+  font-size: 0.85rem;
+  color: #1D4533;
+  margin: 0 0 1rem;
+}
+
+.page-library .read-me-btn {
+  display: inline-block;
+  background-color: #D4AF37;
+  color: #1D4533;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: opacity 0.2s ease;
+}
+
+.page-library .read-me-btn:hover {
+  opacity: 0.8;
+}
 
 /* =====================================================
    HOBBY — DESKTOP
