@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(typeChar, 900); // starts just after the 0.8s fade-in finishes
     } // end tagline typing effect
 
-        // --- Flip cards: hover flips on desktop, tap-to-toggle on touch devices only ---
+    // --- Flip cards: hover flips on desktop, tap-to-toggle on touch devices only ---
     const flipCards = document.querySelectorAll('.mainpage .flip-card');
     flipCards.forEach(card => {
       card.addEventListener('click', () => {
@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }); // end flip cards
-        // --- Background toggle: swaps between plain and image background ---
+
+    // --- Background toggle: swaps between plain and image background ---
     const bgToggle = document.querySelector('.bg-toggle');
     const bgLayer = document.querySelector('.bg-image-layer');
     if (bgToggle && bgLayer) {
@@ -68,6 +69,40 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('bg-active');
       });
     } // end background toggle
+
+    // --- TODO card: renders the list ---
+    // Local testing note: if fetch('todo.json') fails (common in local/offline
+    // preview environments due to file:// restrictions), this falls back to
+    // a hardcoded array so you can still see it working while developing.
+    // Once hosted on GitHub Pages, the fetch will work correctly on its own.
+    const todoList = document.getElementById('todoList');
+    if (todoList) {
+      const fallbackTodos = [
+        { task: "Add FAQ card", status: "planned" },
+        { task: "Bookshelf art for library", status: "in progress" },
+        { task: "Tech stack card", status: "planned" },
+        { task: "Currently into section (Steam + Spotify)", status: "planned" },
+        { task: "Timeline strip", status: "planned" },
+        { task: "Section dividers", status: "planned" }
+      ];
+
+      function renderTodos(data) {
+        data.forEach(item => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span>${item.task}</span><span class="todo-status">${item.status}</span>`;
+          todoList.appendChild(li);
+        });
+      }
+
+      fetch('todo.json')
+        .then(response => response.json())
+        .then(data => renderTodos(data))
+        .catch(error => {
+          console.log('todo.json fetch failed, using fallback list:', error);
+          renderTodos(fallbackTodos);
+        });
+    } // end TODO card
+
   } // end mainpage block
 
 
@@ -103,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } // end background toggle
 
-                // --- Bookshelf: click any book to reveal its cover + flashcard ---
+    // --- Bookshelf: click any book to reveal its cover + flashcard ---
     const books = document.querySelectorAll('.page-library .book');
     const flashcards = document.querySelectorAll('.page-library .book-flashcard');
 
@@ -142,7 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
           book.classList.remove('revealed');
         });
       }
-    }); // end bookshelfs
+    }); // end bookshelf
+
   } // end library block
 
 

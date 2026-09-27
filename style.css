@@ -41,6 +41,8 @@ body.mainpage {
   color: #ffffff;
 }
 
+/* ----- START: infoboxme + introbox ----- */
+
 .mainpage .infoboxme {
   border-radius: 30px;
   padding: 1.1rem;
@@ -115,7 +117,10 @@ body.mainpage {
   animation: blinkCursor 0.8s steps(1) infinite;
 }
 
-/* threecards + flip mechanism */
+/* ----- END: infoboxme + introbox ----- */
+
+
+/* ----- START: threecards + flip mechanism ----- */
 
 .mainpage .threecards {
   display: flex;
@@ -203,6 +208,7 @@ body.mainpage.bg-active .cardright:hover {
     0 0 40px rgba(255, 255, 255, 0.7),
     0 20px 40px rgba(0, 0, 0, 0.6);
 }
+
 .mainpage .card-content {
   display: flex;
   flex-direction: column;
@@ -222,7 +228,10 @@ body.mainpage.bg-active .cardright:hover {
   margin: 0;
 }
 
-/* pull tab */
+/* ----- END: threecards + flip mechanism ----- */
+
+
+/* ----- START: pull tab ----- */
 
 .mainpage .pull-tab {
   position: fixed;
@@ -255,7 +264,10 @@ body.mainpage.bg-active .cardright:hover {
   box-shadow: 0 0 20px #b829f7, 0 0 40px rgba(184, 41, 247, 0.9);
 }
 
-/* background toggle: image layer + trigger icon */
+/* ----- END: pull tab ----- */
+
+
+/* ----- START: background toggle (image layer + trigger icon) ----- */
 
 .mainpage .bg-image-layer {
   position: fixed;
@@ -303,7 +315,10 @@ body.mainpage.bg-active .cardright:hover {
   image-rendering: pixelated;
 }
 
-/* background-active state: border shifts from purple to white */
+/* ----- END: background toggle ----- */
+
+
+/* ----- START: background-active state (border shifts purple -> white) ----- */
 
 body.mainpage.bg-active .introbox,
 body.mainpage.bg-active .cardleft,
@@ -316,15 +331,6 @@ body.mainpage.bg-active .cardright-back {
   box-shadow: 
     0 0 12px #ffffff, 
     0 0 24px rgba(255, 255, 255, 0.5),
-    0 20px 40px rgba(0, 0, 0, 0.6);
-}
-
-body.mainpage.bg-active .cardleft:hover,
-body.mainpage.bg-active .cardmiddle:hover,
-body.mainpage.bg-active .cardright:hover {
-  box-shadow: 
-    0 0 20px #ffffff, 
-    0 0 40px rgba(255, 255, 255, 0.7),
     0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
@@ -343,7 +349,42 @@ body.mainpage.bg-active .contactbox:hover {
     0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* contact row */
+body.mainpage.bg-active .todo-card {
+  border-color: #ffffff;
+  box-shadow: 
+    0 0 12px #ffffff, 
+    0 0 24px rgba(255, 255, 255, 0.5),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+body.mainpage.bg-active .todo-card:hover {
+  box-shadow: 
+    0 0 20px #ffffff, 
+    0 0 40px rgba(255, 255, 255, 0.7),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+body.mainpage.bg-active .todo-list li {
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+body.mainpage.bg-active .mobile-nav a {
+  border-color: #ffffff;
+  box-shadow: 
+    0 0 12px #ffffff, 
+    0 0 24px rgba(255, 255, 255, 0.5);
+}
+
+body.mainpage.bg-active .mobile-nav a:hover {
+  box-shadow: 
+    0 0 18px #ffffff, 
+    0 0 32px rgba(255, 255, 255, 0.9);
+}
+
+/* ----- END: background-active state ----- */
+
+
+/* ----- START: contact row ----- */
 
 .mainpage .contactbox {
   display: grid;
@@ -381,8 +422,98 @@ body.mainpage.bg-active .contactbox:hover {
   /* font-family: ; TODO: set your own font family here */
   font-size: 0.9rem;
   transition: opacity 0.2s ease;
+  min-width: 0;
+  overflow: hidden;
 }
-/* mainpage mobile nav (desktop-hidden, shown in mobile section below) */
+
+.mainpage .contact-link:hover {
+  opacity: 0.7;
+}
+
+.mainpage .contact-link span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mainpage .contact-link i {
+  font-size: 1.4rem;
+  color: #b829f7;
+  width: 28px;
+  text-align: center;
+}
+
+/* ----- END: contact row ----- */
+
+
+/* ----- START: to-do card (JSON-driven, top-left) ----- */
+
+.mainpage .todo-card {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 220px;
+  max-height: 260px;
+  overflow-y: auto;
+  border: 2px solid #b829f7;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 12px #b829f7, 
+    0 0 24px rgba(184, 41, 247, 0.7),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 150;
+  transition: transform 0.3s ease, border-width 0.3s ease, box-shadow 0.3s ease,
+              background-color 0.8s ease, border-color 0.8s ease;
+}
+
+.mainpage .todo-card:hover {
+  transform: translateY(-4px);
+  border-width: 4px;
+  box-shadow: 
+    0 0 20px #b829f7, 
+    0 0 40px rgba(184, 41, 247, 0.9),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.mainpage .todo-card h3 {
+  margin: 0 0 0.6rem;
+  font-family: "Audiowide", sans-serif;
+  font-size: 0.95rem;
+  color: #b829f7;
+}
+
+.mainpage .todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.8rem;
+}
+
+.mainpage .todo-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(184, 41, 247, 0.3);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.mainpage .todo-list li:last-child {
+  border-bottom: none;
+}
+
+.mainpage .todo-status {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+
+/* ----- END: to-do card ----- */
+
+
+/* ----- START: mainpage mobile nav (desktop-hidden, shown in mobile section below) ----- */
 
 .mobile-nav a {
   color: #b829f7;
@@ -392,9 +523,22 @@ body.mainpage.bg-active .contactbox:hover {
   padding: 0.5rem 1.2rem;
   border: 2px solid #b829f7;
   border-radius: 8px;
+  box-shadow: 
+    0 0 12px #b829f7, 
+    0 0 24px rgba(184, 41, 247, 0.7);
+  transition: transform 0.3s ease, border-width 0.3s ease, box-shadow 0.3s ease,
+              border-color 0.8s ease;
 }
 
+.mobile-nav a:hover {
+  transform: translateY(-2px);
+  border-width: 3px;
+  box-shadow: 
+    0 0 18px #b829f7, 
+    0 0 32px rgba(184, 41, 247, 0.9);
+}
 
+/* ----- END: mainpage mobile nav ----- */
 
 
 /* =====================================================
@@ -409,7 +553,18 @@ body.page-library {
 .page-library .mobile-nav a {
   color: #1D4533;
   border-color: #D4AF37;
+  box-shadow: 
+    0 0 12px #D4AF37, 
+    0 0 24px rgba(212, 175, 55, 0.7);
 }
+
+.page-library .mobile-nav a:hover {
+  box-shadow: 
+    0 0 18px #D4AF37, 
+    0 0 32px rgba(212, 175, 55, 0.9);
+}
+
+/* ----- START: library pull tab ----- */
 
 .page-library .pull-tab {
   position: fixed;
@@ -440,7 +595,10 @@ body.page-library {
   transform: translateY(-50%) translateX(0%);
 }
 
-/* bookshelf */
+/* ----- END: library pull tab ----- */
+
+
+/* ----- START: bookshelf ----- */
 
 .page-library .bookshelf {
   display: flex;
@@ -502,8 +660,10 @@ body.page-library {
   width: 140px;
 }
 
+/* ----- END: bookshelf ----- */
 
-/* flashcard */
+
+/* ----- START: flashcard ----- */
 
 .page-library .book-flashcard {
   display: none;
@@ -577,6 +737,9 @@ body.page-library {
   opacity: 0.8;
 }
 
+/* ----- END: flashcard ----- */
+
+
 /* =====================================================
    HOBBY — DESKTOP
    (placeholder — not yet built)
@@ -590,24 +753,35 @@ body.page-library {
 
 @media (max-width: 768px) {
 
-  /* mobile nav (shared shell, colors overridden per-page below) */
+  /* ----- START: mobile nav (shared shell, colors overridden per-page below) ----- */
 
   .mobile-nav {
     display: flex;
     justify-content: center;
     position: sticky;
     top: 0;
-    background-color: #000000;
     padding: 0.8rem;
     z-index: 200;
   }
+
+  .mainpage .mobile-nav {
+    background-color: transparent;
+  }
+
+  /* ----- END: mobile nav ----- */
+
+
+  /* ----- START: hide desktop pull-tabs on mobile ----- */
 
   .mainpage .pull-tab,
   .page-library .pull-tab {
     display: none;
   }
 
-  /* mainpage mobile adjustments */
+  /* ----- END: hide desktop pull-tabs ----- */
+
+
+  /* ----- START: mainpage mobile adjustments ----- */
 
   .mainpage .infoboxme,
   .mainpage .introbox {
@@ -641,7 +815,71 @@ body.page-library {
     font-size: 0.85rem;
   }
 
-  /* library mobile adjustments */
+  /* ----- END: mainpage mobile adjustments ----- */
+
+
+  /* ----- START: mainpage bg-toggle mobile adjustments ----- */
+  /* shrink the toggle icon slightly + pull it in from the edge
+     so it doesn't sit too close to the mobile-nav bar */
+
+  .mainpage .bg-toggle {
+    top: 0.6rem;
+    right: 0.6rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .mainpage .bg-toggle img {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* ----- END: mainpage bg-toggle mobile adjustments ----- */
+
+
+  /* ----- START: mainpage contactbox mobile adjustments ----- */
+  /* keeps the 2x2 grid, just narrows the card and shrinks text
+     slightly so labels don't wrap awkwardly on small screens */
+
+  .mainpage .contactbox {
+    max-width: 90%;
+    padding: 0.9rem;
+    gap: 0.7rem;
+  }
+
+  .mainpage .contact-link {
+    font-size: 0.78rem;
+    gap: 0.5rem;
+  }
+
+  .mainpage .contact-link i {
+    font-size: 1.2rem;
+    width: 22px;
+  }
+
+  /* ----- END: mainpage contactbox mobile adjustments ----- */
+
+
+  /* ----- START: mainpage todo-card mobile adjustments ----- */
+  /* the fixed top-left card would otherwise sit awkwardly under
+     the sticky mobile-nav bar and eat too much width, so it is
+     repositioned to sit below the nav, centered, narrower, and
+     shorter (with its own internal scroll) rather than floating */
+
+  .mainpage .todo-card {
+    position: static;
+    width: 90%;
+    max-width: 90%;
+    max-height: 160px;
+    margin: 1rem auto 0;
+    top: auto;
+    left: auto;
+  }
+
+  /* ----- END: mainpage todo-card mobile adjustments ----- */
+
+
+  /* ----- START: library mobile adjustments ----- */
 
   .page-library .mobile-nav {
     background-color: #A98B76;
@@ -658,6 +896,8 @@ body.page-library {
     font-size: 0.85rem;
   }
 
+  /* ----- END: library mobile adjustments ----- */
+
 }
 
 
@@ -670,5 +910,21 @@ body.page-library {
   .mainpage .names {
     font-size: 26px;
   }
+
+  /* ----- START: todo-card, even smaller phones ----- */
+
+  .mainpage .todo-card {
+    max-height: 130px;
+  }
+
+  .mainpage .todo-card h3 {
+    font-size: 0.85rem;
+  }
+
+  .mainpage .todo-list {
+    font-size: 0.72rem;
+  }
+
+  /* ----- END: todo-card ----- */
 
 }
