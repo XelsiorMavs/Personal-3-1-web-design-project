@@ -19,107 +19,138 @@
 </head>
 <body class="mainpage">
 
+    <!-- ===================== START: mobile nav ===================== -->
     <nav class="mobile-nav">
-  <a href="library.html">Library</a>
-</nav>
-        <a href="library.html" class="pull-tab">
+        <a href="library.html">Library</a>
+    </nav>
+    <!-- ===================== END: mobile nav ===================== -->
+
+    <!-- ===================== START: pull tab ===================== -->
+    <a href="library.html" class="pull-tab">
         <span class="tab-label">To the Library!</span>
-        </a>
+    </a>
+    <!-- ===================== END: pull tab ===================== -->
+
+    <!-- ===================== START: background toggle ===================== -->
     <div class="bg-image-layer"></div>
 
     <button class="bg-toggle" aria-label="Toggle background">
-    <img src="images/Starshinenobg.png" alt="">
+        <img src="images/Starshinenobg.png" alt="">
     </button>
+    <!-- ===================== END: background toggle ===================== -->
+
+    <!-- ===================== START: main content (fades in together) ===================== -->
     <div class="fade-wrapper">
         <div class="mainpage-content">
-            <div class="infoboxme">
-            <div class="content-box">
-                <p class="names">Matthew/Mavs/Xel</p>
-                <p class="meinfo">Gamer, programmer, and writer</p>
-            </div>
-            </div>
 
+            <!-- ----- START: to-do card (JSON-driven) ----- -->
+            <div class="todo-card">
+                <h3>To-Do</h3>
+                <ul class="todo-list" id="todoList">
+                    <!-- populated by JS from todo.json -->
+                </ul>
+            </div>
+            <!-- ----- END: to-do card ----- -->
+
+            <!-- ----- START: infoboxme (name card) ----- -->
+            <div class="infoboxme">
+                <div class="content-box">
+                    <p class="names">Matthew/Mavs/Xel</p>
+                    <p class="meinfo">Gamer, programmer, and writer</p>
+                </div>
+            </div>
+            <!-- ----- END: infoboxme ----- -->
+
+            <!-- ----- START: introbox (description card) ----- -->
             <div class="introbox">
                 <p>Lorem ipsum dolor sit amet.</p>
             </div>
+            <!-- ----- END: introbox ----- -->
 
+            <!-- ----- START: threecards (likes/dislikes/fun facts) ----- -->
             <div class="threecards">
 
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front cardleft">
-                <div class="card-content">
-                    <h3>Likes</h3>
-                    <p>left</p>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front cardleft">
+                            <div class="card-content">
+                                <h3>Likes</h3>
+                                <p>left</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back cardleft-back">
+                            <div class="card-content">
+                                <h3>More Likes</h3>
+                                <p>Extra detail for left card</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="flip-card-back cardleft-back">
-                <div class="card-content">
-                    <h3>More Likes</h3>
-                    <p>Extra detail for left card</p>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front cardmiddle">
+                            <div class="card-content">
+                                <h3>Dislikes</h3>
+                                <p>middle</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back cardmiddle-back">
+                            <div class="card-content">
+                                <h3>More Dislikes</h3>
+                                <p>Extra detail for middle card</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front cardright">
+                            <div class="card-content">
+                                <h3>Fun Facts</h3>
+                                <p>right</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back cardright-back">
+                            <div class="card-content">
+                                <h3>More Fun Facts</h3>
+                                <p>Extra detail for right card</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- end of 3 cards -->
+            <!-- ----- END: threecards ----- -->
+
+            <!-- ----- START: contactbox (contact links) ----- -->
+            <div class="contactbox">
+                <a href="https://discord.com/users/_charontis_" target="_blank" class="contact-link">
+                    <i class="fa-brands fa-discord"></i>
+                    <span>_charontis_</span>
+                </a>
+
+                <a href="https://github.com/XelsiorMavs" target="_blank" class="contact-link">
+                    <i class="fa-brands fa-github"></i>
+                    <span>github.com/XelsiorMavs</span>
+                </a>
+
+                <a href="mailto:xelzephwrites@gmail.com" class="contact-link">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>xelzephwrites@gmail.com</span>
+                </a>
+
+                <a href="https://steamcommunity.com/profiles/76561199862352220/" target="_blank" class="contact-link">
+                    <i class="fa-brands fa-steam"></i>
+                    <span>mimintomori</span>
+                </a>
             </div>
+            <!-- ----- END: contactbox ----- -->
+
         </div>
     </div>
-
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front cardmiddle">
-                <div class="card-content">
-                    <h3>Dislikes</h3>
-                    <p>middle</p>
-                </div>
-            </div>
-            <div class="flip-card-back cardmiddle-back">
-                <div class="card-content">
-                    <h3>More Dislikes</h3>
-                    <p>Extra detail for middle card</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front cardright">
-                <div class="card-content">
-                    <h3>Fun Facts</h3>
-                    <p>right</p>
-                </div>
-            </div>
-            <div class="flip-card-back cardright-back">
-                <div class="card-content">
-                    <h3>More Fun Facts</h3>
-                    <p>Extra detail for right card</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </div> <!-- end of 3 cards -->
-
-    <div class="contactbox">
-    <a href="https://discord.com/users/_charontis_" target="_blank" class="contact-link">
-        <i class="fa-brands fa-discord"></i>
-        <span>_charontis_</span>
-    </a>
-
-    <a href="https://github.com/XelsiorMavs" target="_blank" class="contact-link">
-        <i class="fa-brands fa-github"></i>
-        <span>github.com/XelsiorMavs</span>
-    </a>
-
-    <a href="mailto:xelzephwrites@gmail.com" class="contact-link">
-        <i class="fa-solid fa-envelope"></i>
-        <span>xelzephwrites@gmail.com</span>
-    </a>
-
-    <a href="https://steamcommunity.com/profiles/76561199862352220/" target="_blank" class="contact-link">
-        <i class="fa-brands fa-steam"></i>
-        <span>mimintomori</span>
-    </a>
-</div>
-        </div>
+    <!-- ===================== END: main content ===================== -->
 
 </body>
 </html>
